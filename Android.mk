@@ -5,12 +5,14 @@ LOCAL_MODULE_TAGS := optional
 
 contacts_common_dir := ../ContactsCommon
 phone_common_dir := ../PhoneCommon
+sim_contacts_dir := ../SimContacts
 
 src_dirs := src $(contacts_common_dir)/src \
     $(phone_common_dir)/src \
+    $(sim_contacts_dir)/src \
     $(phone_common_dir)/src-ambient
 
-res_dirs := res $(contacts_common_dir)/res $(phone_common_dir)/res
+res_dirs := res $(contacts_common_dir)/res $(phone_common_dir)/res $(sim_contacts_dir)/res
 
 LOCAL_SRC_FILES := $(call all-java-files-under, $(src_dirs))
 LOCAL_RESOURCE_DIR := $(addprefix $(LOCAL_PATH)/, $(res_dirs)) \
@@ -26,7 +28,7 @@ LOCAL_AAPT_FLAGS := \
     --extra-packages com.cyngn.uicommon
 
 LOCAL_JAVA_LIBRARIES := telephony-common voip-common ims-common
-LOCAL_FULL_LIBS_MANIFEST_FILES := $(LOCAL_PATH)/AndroidManifest_cm.xml
+LOCAL_FULL_LIBS_MANIFEST_FILES := $(LOCAL_PATH)/AndroidManifest_cm.xml $(LOCAL_PATH)/AndroidManifest_kallop.xml
 LOCAL_STATIC_JAVA_LIBRARIES := \
     com.android.vcard \
     android-common \
